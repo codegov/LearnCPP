@@ -182,8 +182,8 @@ struct icmp {
 #define MAXBUFSIZE      4096
 
 static int DATALEN = 56;        /* data that goes with ICMP echo request */
-static const int IP_HEADER_LEN = 20;
-static const int ICMP_HEADER_LEN = 8;
+//static const int IP_HEADER_LEN = 20;
+//static const int ICMP_HEADER_LEN = 8;
 
 class IcmpTest
 {
@@ -249,5 +249,16 @@ public:
         memset(sendbuffer, 0, MAXBUFSIZE);
         int len = 0;
         preparePacket(sendbuffer, len);
+        
+        printf("前%d个字节为:\n", len);
+        for(int i = 0; i < len; i++)
+        {
+            printf("%x、", sendbuffer[i]);
+            if (i == 0 || i == 1 || i == 3 || i == 5 || i == 7  || i == 23 || i == 63)
+            {
+                printf("\n");
+            }
+        }
+        printf("\n");
     }
 };
