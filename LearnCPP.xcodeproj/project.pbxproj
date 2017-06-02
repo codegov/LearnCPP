@@ -12,6 +12,7 @@
 		82789E0F1EE1168700C970D0 /* PingTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0B1EE1168700C970D0 /* PingTest.cpp */; };
 		82789E101EE1168700C970D0 /* SockTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0C1EE1168700C970D0 /* SockTest.cpp */; };
 		82789E111EE1168700C970D0 /* TimeTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0D1EE1168700C970D0 /* TimeTest.cpp */; };
+		82789E131EE13F8500C970D0 /* UnionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E121EE13F8500C970D0 /* UnionTest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		82789E0B1EE1168700C970D0 /* PingTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PingTest.cpp; sourceTree = "<group>"; };
 		82789E0C1EE1168700C970D0 /* SockTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SockTest.cpp; sourceTree = "<group>"; };
 		82789E0D1EE1168700C970D0 /* TimeTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeTest.cpp; sourceTree = "<group>"; };
+		82789E121EE13F8500C970D0 /* UnionTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UnionTest.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				82789E0B1EE1168700C970D0 /* PingTest.cpp */,
 				82789E0D1EE1168700C970D0 /* TimeTest.cpp */,
 				82789E0C1EE1168700C970D0 /* SockTest.cpp */,
+				82789E121EE13F8500C970D0 /* UnionTest.cpp */,
 			);
 			path = LearnCPP;
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82789E0E1EE1168700C970D0 /* ClassTest.cpp in Sources */,
+				82789E131EE13F8500C970D0 /* UnionTest.cpp in Sources */,
 				82789E101EE1168700C970D0 /* SockTest.cpp in Sources */,
 				82789E041EE1166400C970D0 /* main.cpp in Sources */,
 				82789E111EE1168700C970D0 /* TimeTest.cpp in Sources */,

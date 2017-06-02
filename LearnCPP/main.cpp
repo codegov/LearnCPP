@@ -11,14 +11,16 @@
 #include "ClassTest.cpp"
 #include "TimeTest.cpp"
 #include "SockTest.cpp"
+#include "UnionTest.cpp"
 
 
 int main(int argc, const char * argv[])
 {
-    ClassTest().testImp();
-    PingTest().testImp();
-    TimeTest().testImp();
-    SockTest().testImp();
+    UnionTest().testImp();
+//    ClassTest().testImp();
+//    PingTest().testImp();
+//    TimeTest().testImp();
+//    SockTest().testImp();
     
     return 0;
 }
