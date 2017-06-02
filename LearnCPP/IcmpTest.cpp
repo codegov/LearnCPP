@@ -238,7 +238,7 @@ private:
         bcopy((void*)&now, (void*)&sendbuf[ICMP_MINLEN], sizeof(now)); //sizeof(now)等于16，则8字节到23字节的赋值，值为now数据
         _len = ICMP_MINLEN + DATALEN;        /* checksum ICMP header and data */
         icmp->icmp_cksum = 0;
-        icmp->icmp_cksum = in_cksum((u_short*) icmp, _len);// 2字节到3字节的赋值，值为把0字节到63字节的值加起来
+        icmp->icmp_cksum = in_cksum((u_short*) icmp, _len);// 2字节到3字节的赋值，值为把0字节到63字节的值加起来，在进行运算得来
         memcpy(_sendbuffer, sendbuf, _len);
     }
     

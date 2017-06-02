@@ -17,8 +17,8 @@
 
 int main(int argc, const char * argv[])
 {
-//    IcmpTest().testImp();
-    UnionTest().testImp();
+    IcmpTest().testImp();
+//    UnionTest().testImp();
 //    ClassTest().testImp();
 //    PingTest().testImp();
 //    TimeTest().testImp();
