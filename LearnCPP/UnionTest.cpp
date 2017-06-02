@@ -45,8 +45,8 @@ using namespace std;
 
 class UnionTest
 {
-public:
-    void testImp()
+private:
+    void testUnoin()
     {
         union
         {
@@ -70,6 +70,62 @@ public:
         number.half.third  = 4;
         number.half.fourth = 8;
         
-        printf("union i=%x\n", number.i);
+        printf("union i=%x  %ld  %ld\n", number.i, sizeof(number), sizeof(number.half));
+    }
+    
+    void testStructSize()
+    {
+        struct
+        {
+            char c1;   // 1字节
+            char c2;   // 1字节
+            u_short i; // 2字节
+            
+            union
+            {
+                u_short u1;
+            }UU1; // 2字节
+            
+            union
+            {
+                long u2;
+            }UU2; // 8字节
+        }SS; // 16字节
+        
+        /**
+         １:数据成员对齐规则：结构(struct)(或联合(union))的数据成员，第一个数据成员放在offset为0的地方，以后每个数据成员存储的起始位置要从该成员大小或者成员的子成员大小（只要该成员有子成员，比如说是数组，结构体等）的整数倍开始(比如int在32位机为４字节,则要从４的整数倍地址开始存储。
+         
+         ２:结构体作为成员:如果一个结构里有某些结构体成员,则结构体成员要从其内部最大元素大小的整数倍地址开始存储.(struct a里存有struct b,b里有char,int,double等元素,那b应该从8的整数倍开始存储.)
+         
+         ３:收尾工作:结构体的总大小,也就是sizeof的结果,.必须是其内部最大成员的整数倍.不足的要补齐.
+         */
+        
+        typedef struct bb
+        {
+            int id;             //[0]....[3]
+            double weight;      //[8]........[15]　原则１ 因为double的大小是8字节却不是第一个数据，存储的起始位置要从8的整数倍开始，则从8字节开始存储
+            float height;       //[16]....[19]
+        }BB;                    //内部成员大小最大的为double，大小为8,补齐字节[20]...[23]  原则３
+        
+        typedef struct aa
+        {
+            char name[2];     //[0].[1]
+            int  id;          //[4]....[7]　　　　原则１
+            
+            double score;     //[8]....[15]
+            short grade;      //[16].[17]
+            BB b;             //[24]......[47]　 原则２ 结构体成员要从其内部最大元素大小的整数倍地址开始存储
+        }AA;                  //内部成员大小最大的为BB，大小为24,补齐字节[48]  原则３
+        
+        printf("内存字节对齐=%ld %ld\n", sizeof(BB), sizeof(AA));
+        
+        printf("struct size:%ld %ld %ld\n", sizeof(SS), sizeof(SS.UU1), sizeof(SS.UU2));
+    }
+    
+public:
+    void testImp()
+    {
+        testUnoin();
+        testStructSize();
     }
 };

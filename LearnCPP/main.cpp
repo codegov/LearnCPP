@@ -12,10 +12,12 @@
 #include "TimeTest.cpp"
 #include "SockTest.cpp"
 #include "UnionTest.cpp"
+#include "IcmpTest.cpp"
 
 
 int main(int argc, const char * argv[])
 {
+//    IcmpTest().testImp();
     UnionTest().testImp();
 //    ClassTest().testImp();
 //    PingTest().testImp();

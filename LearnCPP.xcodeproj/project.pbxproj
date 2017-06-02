@@ -13,6 +13,7 @@
 		82789E101EE1168700C970D0 /* SockTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0C1EE1168700C970D0 /* SockTest.cpp */; };
 		82789E111EE1168700C970D0 /* TimeTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0D1EE1168700C970D0 /* TimeTest.cpp */; };
 		82789E131EE13F8500C970D0 /* UnionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E121EE13F8500C970D0 /* UnionTest.cpp */; };
+		82789E151EE14EF500C970D0 /* IcmpTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E141EE14EF500C970D0 /* IcmpTest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		82789E0C1EE1168700C970D0 /* SockTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SockTest.cpp; sourceTree = "<group>"; };
 		82789E0D1EE1168700C970D0 /* TimeTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeTest.cpp; sourceTree = "<group>"; };
 		82789E121EE13F8500C970D0 /* UnionTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UnionTest.cpp; sourceTree = "<group>"; };
+		82789E141EE14EF500C970D0 /* IcmpTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IcmpTest.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				82789E0D1EE1168700C970D0 /* TimeTest.cpp */,
 				82789E0C1EE1168700C970D0 /* SockTest.cpp */,
 				82789E121EE13F8500C970D0 /* UnionTest.cpp */,
+				82789E141EE14EF500C970D0 /* IcmpTest.cpp */,
 			);
 			path = LearnCPP;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 				82789E0E1EE1168700C970D0 /* ClassTest.cpp in Sources */,
 				82789E131EE13F8500C970D0 /* UnionTest.cpp in Sources */,
 				82789E101EE1168700C970D0 /* SockTest.cpp in Sources */,
+				82789E151EE14EF500C970D0 /* IcmpTest.cpp in Sources */,
 				82789E041EE1166400C970D0 /* main.cpp in Sources */,
 				82789E111EE1168700C970D0 /* TimeTest.cpp in Sources */,
 				82789E0F1EE1168700C970D0 /* PingTest.cpp in Sources */,
