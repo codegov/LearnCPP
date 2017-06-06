@@ -22,7 +22,6 @@
 #include <sys/ioctl.h>
 #include <sys/fcntl.h>
 
-#include "socketselect.h"
 
 using namespace std;
 
@@ -203,7 +202,6 @@ private:
     int sockfd_;
     struct sockaddr          sendaddr_;
     struct sockaddr          recvaddr_;
-    SocketSelectBreaker     readwrite_breaker_;
     
     static uint16_t in_cksum(uint16_t* _addr, int _len)
     {
@@ -384,12 +382,12 @@ private:
         int size = 60 * 1024;
         setsockopt(sockfd, SOL_SOCKET, SO_RCVBUF, &size, sizeof(size));
         
-        int _only = 0;
-        int ipv6onlyres = setsockopt(sockfd, IPPROTO_IPV6, IPV6_V6ONLY, &_only, sizeof(_only));
-        if (ipv6onlyres != 0)
-        {
-            printf("set ipv6only failed\n");
-        }
+//        int _only = 0;
+//        int ipv6onlyres = setsockopt(sockfd, IPPROTO_IPV6, IPV6_V6ONLY, &_only, sizeof(_only));
+//        if (ipv6onlyres != 0)
+//        {
+//            printf("set ipv6only failed\n");
+//        }
         
 //        static const int noblock = 1;
 //        int nobres = ioctl(sockfd, FIONBIO, (u_long*)&noblock);
@@ -400,17 +398,17 @@ private:
 //            return -1;
 //        }
         
-        int ret = fcntl(sockfd, F_GETFL, 0);
-        if(ret >= 0)
-        {
-            long flags = ret | O_NONBLOCK;
-            ret = fcntl(sockfd, F_SETFL, flags);
-        }
-        if (ret != 0)
-        {
-            printf("set nonblock socket error\n");
-            return -1;
-        }
+//        int ret = fcntl(sockfd, F_GETFL, 0);
+//        if(ret >= 0)
+//        {
+//            long flags = ret | O_NONBLOCK;
+//            ret = fcntl(sockfd, F_SETFL, flags);
+//        }
+//        if (ret != 0)
+//        {
+//            printf("set nonblock socket error\n");
+//            return -1;
+//        }
 
         
         return 0;
@@ -528,6 +526,40 @@ private:
     
     int recv()
     {
+//        int n;
+//        extern int errno;
+//        
+//        char            recvbuf[MAXBUFSIZE];
+//        char            controlbuf[MAXBUFSIZE];
+//        memset(recvbuf, 0, MAXBUFSIZE);
+//        memset(controlbuf, 0, MAXBUFSIZE);
+//        
+//
+//        
+////        signal(SIGALRM, statistics);
+//        unsigned int fromlen = sizeof(recvaddr_);
+//        
+////        alarm(MAX_WAIT_TIME);
+//        
+//        while((n = recvfrom(sockfd_,
+//                            recvbuf,
+//                            sizeof(recvbuf),
+//                            0,
+//                            (struct sockaddr *)&(recvaddr_),
+//                            &fromlen) ) < 0)
+//        {
+//            if(errno == EINTR) continue;
+//            
+//            perror("recvfrom error");
+//            return -1;
+//        }
+//        
+//        printf("sockfd= %d after recvmsg() n =%d\n", sockfd_, (int)n);
+//
+////        if(unpack(recv_packet_, n) == -1) return -2;
+//        
+//        return 0;
+        
         char            recvbuf[MAXBUFSIZE];
         char            controlbuf[MAXBUFSIZE];
         memset(recvbuf, 0, MAXBUFSIZE);
@@ -629,7 +661,7 @@ private:
     
     void testPing()
     {
-        std::string host = "www.marsopen.cn";//"127.0.0.1";//"www.qq.com";//
+        std::string host = "www.qq.com";//"www.marsopen.cn";//"127.0.0.1";//"www.baidu.com";//
         ping(0, 0, 0, host.c_str(), 0);
     }
     
