@@ -13,14 +13,16 @@
 #include "SockTest.cpp"
 #include "UnionTest.cpp"
 #include "IcmpTest.cpp"
+#include "SysctlTest.cpp"
 
 
 int main(int argc, const char * argv[])
 {
+//    SysctlTest().testImp();
     IcmpTest().testImp();
 //    UnionTest().testImp();
 //    ClassTest().testImp();
-//    PingTest().testImp();
+    PingTest().testImp();
 //    TimeTest().testImp();
 //    SockTest().testImp();
     

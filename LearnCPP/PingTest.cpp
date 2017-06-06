@@ -18,9 +18,9 @@ class PingTest
 public:
     int ping(int count, int interval/*S*/, int timeout/*S*/, const char *dest, unsigned int packetSize)
     {
-        count    = count <= 0 ? 2 : count;
+        count    = count    <= 0 ? 2 : count;
         interval = interval <= 0 ? 1 : interval;
-        timeout  = timeout <= 0 ? 4 : timeout;
+        timeout  = timeout  <= 0 ? 4 : timeout;
         
         if (NULL == dest || 0 == strlen(dest))
         {
