@@ -420,10 +420,11 @@ private:
             return -1;
         }
        
-        printf("===测试icmp开始===\n");
+        printf("===测试icmp开始===\n\n");
         
         while (readcount > 0)
         {
+            printf("\n===第%d包===\n", (count - readcount + 1));
             send();
             sendcount--;
 
@@ -431,7 +432,7 @@ private:
             readcount --;
         }
         
-        printf("===测试icmp完成===\n");
+        printf("\n\n===测试icmp完成===\n");
         
         return 0;
     }
