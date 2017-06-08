@@ -19,9 +19,9 @@
 int main(int argc, const char * argv[])
 {
 //    SysctlTest().testImp();
-    IcmpTest().testImp();
+//    IcmpTest().testImp();
 //    UnionTest().testImp();
-//    ClassTest().testImp();
+    ClassTest().testImp();
 //    PingTest().testImp();
 //    TimeTest().testImp();
 //    SockTest().testImp();
