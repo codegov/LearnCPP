@@ -22,6 +22,9 @@
 #include <sys/un.h>
 #include <sys/ioctl.h>
 #include <sys/fcntl.h>
+#include <mach/mach_time.h>
+#include <sys/poll.h>
+#include <vector>
 
 using namespace std;
 
@@ -38,6 +41,8 @@ private:
     int sockfd_;
     struct sockaddr          sendaddr_;
     struct sockaddr          recvaddr_;
+    std::vector<struct pollfd> vfds_;
+    int breakfd_;
     
     static uint16_t in_cksum(uint16_t* _addr, int _len)
     {
@@ -225,27 +230,17 @@ private:
 //            printf("set ipv6only failed\n");
 //        }
         
-//        static const int noblock = 1;
-//        int nobres = ioctl(sockfd, FIONBIO, (u_long*)&noblock);
-//        
-//        if (nobres != 0)
-//        {
-//            printf("set nonblock socket error\n");
-//            return -1;
-//        }
-        
-//        int ret = fcntl(sockfd, F_GETFL, 0);
-//        if(ret >= 0)
-//        {
-//            long flags = ret | O_NONBLOCK;
-//            ret = fcntl(sockfd, F_SETFL, flags);
-//        }
-//        if (ret != 0)
-//        {
-//            printf("set nonblock socket error\n");
-//            return -1;
-//        }
-
+        int ret = fcntl(sockfd, F_GETFL, 0);
+        if(ret >= 0)
+        {
+            long flags = ret | O_NONBLOCK;
+            ret = fcntl(sockfd, F_SETFL, flags);
+        }
+        if (ret != 0)
+        {
+            printf("set nonblock socket error\n");
+            return -1;
+        }
         
         return 0;
     }
@@ -399,16 +394,136 @@ private:
         
         return n;
     }
+    
+    uint64_t gettickcount()
+    {
+        static mach_timebase_info_data_t timebase_info = {0};
+        
+        // Convert to nanoseconds - if this is the first time we've run, get the timebase.
+        if (timebase_info.denom == 0 )
+        {
+            (void) mach_timebase_info(&timebase_info);
+        }
+        
+        // Convert the mach time to milliseconds
+        uint64_t mach_time = mach_absolute_time();
+        uint64_t millis = (mach_time * timebase_info.numer) / (timebase_info.denom * 1000000);
+        return millis;
+    }
+    
+    void createPollBreakItem()
+    {
+        int pipes_[2];
+        pipes_[0] = -1;
+        pipes_[1] = -1;
+        
+        int Ret;
+        Ret = pipe(pipes_);
+        
+        if (Ret == -1)
+        {
+            printf("pipe err=%d", Ret);
+            
+            pipes_[0] = -1;
+            pipes_[1] = -1;
+        }
+        
+        long flags0 = fcntl(pipes_[0], F_GETFL, 0);
+        long flags1 = fcntl(pipes_[1], F_GETFL, 0);
+        
+        if (flags0 < 0 || flags1 < 0) {
+            printf("get old flags error");
+            close(pipes_[0]);
+            close(pipes_[1]);
+            pipes_[0] = -1;
+            pipes_[1] = -1;
+        }
+        
+        flags0 |= O_NONBLOCK;
+        flags1 |= O_NONBLOCK;
+        int ret0 = fcntl(pipes_[0], F_SETFL, flags0);
+        int ret1 = fcntl(pipes_[1], F_SETFL, flags1);
+        
+        if ((-1 == ret1) || (-1 == ret0)) {
+            printf("fcntl error");
+            close(pipes_[0]);
+            close(pipes_[1]);
+            pipes_[0] = -1;
+            pipes_[1] = -1;
+        }
+        
+        vfds_.clear();
+        
+        int fd = pipes_[0];
+        breakfd_ = fd;
+        struct pollfd fditem = {0};
+        fditem.fd = fd;
+        fditem.events = POLLIN|POLLPRI|POLLERR;
+        vfds_.push_back(fditem);
+    }
+    
+    void createPollPingItem()
+    {
+        struct pollfd fditem_in = {0};
+        fditem_in.fd = sockfd_;
+        fditem_in.events = POLLIN|POLLOUT|POLLERR;
+        vfds_.push_back(fditem_in);
+    }
+    
+    int isSetRecv(int _socket) const
+    {
+        for (size_t i = 0; i < vfds_.size(); i++)
+        {
+            if (vfds_[i].fd == _socket)
+                return vfds_[i].revents & (POLLIN|POLLHUP);
+        }
+        
+        return 0;
+    }
+    
+    int isSetSend(int _socket) const
+    {
+        for (size_t i = 0; i < vfds_.size(); i++)
+        {
+            if (vfds_[i].fd == _socket)
+                return vfds_[i].revents & (POLLOUT);
+        }
+        
+        return 0;
+    }
+    
+    int isSetException(int _socket) const
+    {
+        for (size_t i = 0; i < vfds_.size(); i++){
+            if (vfds_[i].fd == _socket)
+                return vfds_[i].revents & (POLLERR|POLLNVAL);
+        }
+        return 0;
+    }
+    
+    bool IsBreak() const
+    {
+        int breakfd = breakfd_;
+        
+        for (size_t i = 0; i < vfds_.size(); i++){
+            if (vfds_[i].fd == breakfd)
+                return vfds_[i].revents & POLLIN;
+        }
+        
+        return 0;
+    }
 
     
     int ping(int count, int interval/*S*/, int timeout/*S*/, const char *dest, unsigned int packetSize)
     {
-        count    = count    <= 0 ? 2 : count;
+        count    = count    <= 0 ? 4 : count;
         interval = interval <= 0 ? 1 : interval;
-        timeout  = timeout  <= 0 ? 4 : timeout;
+        timeout  = timeout  <= 0 ? 5 : timeout;
         
         int readcount = count;
         int sendcount = count;
+        
+        createPollBreakItem();
         
         if (NULL == dest || 0 == strlen(dest))
         {
@@ -419,17 +534,59 @@ private:
             end(sockfd_);
             return -1;
         }
+        
+        createPollPingItem();
        
         printf("===测试icmp开始===\n\n");
         
+        unsigned long timeout_point = timeout * 1000 + gettickcount();
+        unsigned long send_next = 0;
+        
         while (readcount > 0)
         {
-            printf("\n===第%d包===\n", (count - readcount + 1));
-            send();
-            sendcount--;
-
-            recv();
-            readcount --;
+            bool should_send = false;
+            if (send_next <= gettickcount() && sendcount > 0)
+            {
+                send_next = gettickcount() + interval * 1000;
+                should_send = true;
+            }
+            
+            long timeoutMs = timeout_point - gettickcount();
+            if (timeoutMs < 0)
+            {
+                printf("超时:设置的超时时间内没有收完所有的包\n");
+                return -1;
+            }
+            
+            int ret_ = poll(&vfds_[0], (nfds_t)vfds_.size(), (int)timeoutMs); // 阻塞timeoutMs毫秒
+            if (0 > ret_)
+            {
+                printf("poll 失败");
+            }
+            
+            if (isSetException(sockfd_) || isSetException(breakfd_))
+            {
+                printf("通道异常\n");
+                return -1;
+            }
+            
+            if (should_send && isSetSend(sockfd_))
+            {
+                int x = (count - sendcount + 1);
+                printf("发送%d包数据....\n", x);
+                send();
+                sendcount--;
+                printf("完成发送%d包数据\n", x);
+            }
+            
+            if (isSetRecv(sockfd_) && readcount > 0)
+            {
+                int x = (count - readcount + 1);
+                printf("接收%d包数据....\n", x);
+                recv();
+                readcount --;
+                printf("完成接收%d包数据\n\n\n", x);
+            }
         }
         
         printf("\n\n===测试icmp完成===\n");
@@ -471,8 +628,6 @@ private:
 public:
     void testImp()
     {
-//        testPreparePacket();
-//        testPrepareSendAddr();
         testPing();
     }
 };

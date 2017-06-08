@@ -13,6 +13,10 @@ using namespace std;
 
 class Child
 {
+private:
+//    Child(const Child&);
+//    Child& operator=(const Child&);
+    
 public:
     string name()
     {
@@ -20,11 +24,11 @@ public:
     }
     Child()
     {
-        //        cout<< "付**, 起床!\n";
+        cout<< "付**, 起床!\n";
     }
     ~Child()
     {
-        //        cout<< "付**, 睡觉!\n";
+        cout<< "付**, 睡觉!\n";
     }
 };
 
@@ -71,15 +75,21 @@ class ClassTest
 public:
     void testImp()
     {
-        cout << "B="<< &Daughter::instance_shared_ptr() << "  " << &Son::instance_shared_ptr() << "=E\n";
-        printf("==%p--%p==\n", &Daughter::instance_shared_ptr(), &Son::instance_shared_ptr());
-        Daughter d = Daughter();
-        Son      s = Son();
-        cout << "B="<< &d << "  " << &s << "=E\n";
+//        cout << "B="<< &Daughter::instance_shared_ptr() << "  " << &Son::instance_shared_ptr() << "=E\n";
+//        printf("==%p--%p==\n", &Daughter::instance_shared_ptr(), &Son::instance_shared_ptr());
+//        Daughter d = Daughter();
+//        Son      s = Son();
+//        cout << "B="<< &d << "  " << &s << "=E\n";
+//        
+//        cout << "一、Hello, "<< Daughter::instance_shared_ptr()->name() << "\n";
+//        cout << "二、Hello, "<< Son::instance_shared_ptr()->name() << "\n";
+//        cout << "三、Hello, "<< Daughter().name() << "\n";
+//        cout << "四、Hello, "<< Son().name() << "\n";
         
-        cout << "一、Hello, "<< Daughter::instance_shared_ptr()->name() << "\n";
-        cout << "二、Hello, "<< Son::instance_shared_ptr()->name() << "\n";
-        cout << "三、Hello, "<< Daughter().name() << "\n";
-        cout << "四、Hello, "<< Son().name() << "\n";
+        
+        Child child;
+        
+//        Child &s = child;
+        
     }
 };

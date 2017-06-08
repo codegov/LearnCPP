@@ -14,6 +14,7 @@
 #include "UnionTest.cpp"
 #include "IcmpTest.cpp"
 #include "SysctlTest.cpp"
+#include "pingquery.h"
 
 int main(int argc, const char * argv[])
 {
@@ -24,6 +25,14 @@ int main(int argc, const char * argv[])
 //    PingTest().testImp();
 //    TimeTest().testImp();
 //    SockTest().testImp();
+    
+//    std::string host = "www.qq.com";
+//    mars::sdt::PingQuery pingObj;
+//    int ret = pingObj.RunPingQuery(0, 0, 0, host.c_str(), 0);
+//    if (ret != 0) {
+//        printf("ret=%d", ret);
+//        return ret;
+//    }
     
     return 0;
 }

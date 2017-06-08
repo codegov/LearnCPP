@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8242CA231EE8ED49007EEC72 /* socketselect.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8242CA211EE8ED49007EEC72 /* socketselect.cc */; };
+		8242CA281EE8EED9007EEC72 /* pingquery.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8242CA261EE8EED9007EEC72 /* pingquery.cc */; };
 		82789E041EE1166400C970D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E031EE1166400C970D0 /* main.cpp */; };
 		82789E0E1EE1168700C970D0 /* ClassTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0A1EE1168700C970D0 /* ClassTest.cpp */; };
 		82789E0F1EE1168700C970D0 /* PingTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0B1EE1168700C970D0 /* PingTest.cpp */; };
@@ -30,6 +32,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8242CA201EE8EBC9007EEC72 /* mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mutex.h; sourceTree = "<group>"; };
+		8242CA211EE8ED49007EEC72 /* socketselect.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socketselect.cc; sourceTree = "<group>"; };
+		8242CA221EE8ED49007EEC72 /* socketselect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socketselect.h; sourceTree = "<group>"; };
+		8242CA241EE8EDC9007EEC72 /* lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock.h; sourceTree = "<group>"; };
+		8242CA251EE8EE61007EEC72 /* spinlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spinlock.h; sourceTree = "<group>"; };
+		8242CA261EE8EED9007EEC72 /* pingquery.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pingquery.cc; sourceTree = "<group>"; };
+		8242CA271EE8EED9007EEC72 /* pingquery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pingquery.h; sourceTree = "<group>"; };
 		82789E001EE1166400C970D0 /* LearnCPP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnCPP; sourceTree = BUILT_PRODUCTS_DIR; };
 		82789E031EE1166400C970D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		82789E0A1EE1168700C970D0 /* ClassTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClassTest.cpp; sourceTree = "<group>"; };
@@ -52,6 +61,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8242CA1F1EE8EBC9007EEC72 /* m */ = {
+			isa = PBXGroup;
+			children = (
+				8242CA261EE8EED9007EEC72 /* pingquery.cc */,
+				8242CA271EE8EED9007EEC72 /* pingquery.h */,
+				8242CA251EE8EE61007EEC72 /* spinlock.h */,
+				8242CA241EE8EDC9007EEC72 /* lock.h */,
+				8242CA211EE8ED49007EEC72 /* socketselect.cc */,
+				8242CA221EE8ED49007EEC72 /* socketselect.h */,
+				8242CA201EE8EBC9007EEC72 /* mutex.h */,
+			);
+			path = m;
+			sourceTree = "<group>";
+		};
 		82789DF71EE1166400C970D0 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +102,7 @@
 				82789E121EE13F8500C970D0 /* UnionTest.cpp */,
 				82789E141EE14EF500C970D0 /* IcmpTest.cpp */,
 				82789E161EE52D8800C970D0 /* SysctlTest.cpp */,
+				8242CA1F1EE8EBC9007EEC72 /* m */,
 			);
 			path = LearnCPP;
 			sourceTree = "<group>";
@@ -142,7 +166,9 @@
 			files = (
 				82789E0E1EE1168700C970D0 /* ClassTest.cpp in Sources */,
 				82789E171EE52D8800C970D0 /* SysctlTest.cpp in Sources */,
+				8242CA281EE8EED9007EEC72 /* pingquery.cc in Sources */,
 				82789E131EE13F8500C970D0 /* UnionTest.cpp in Sources */,
+				8242CA231EE8ED49007EEC72 /* socketselect.cc in Sources */,
 				82789E101EE1168700C970D0 /* SockTest.cpp in Sources */,
 				82789E151EE14EF500C970D0 /* IcmpTest.cpp in Sources */,
 				82789E041EE1166400C970D0 /* main.cpp in Sources */,
