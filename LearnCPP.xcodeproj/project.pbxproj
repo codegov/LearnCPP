@@ -39,6 +39,7 @@
 		8242CA251EE8EE61007EEC72 /* spinlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spinlock.h; sourceTree = "<group>"; };
 		8242CA261EE8EED9007EEC72 /* pingquery.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pingquery.cc; sourceTree = "<group>"; };
 		8242CA271EE8EED9007EEC72 /* pingquery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pingquery.h; sourceTree = "<group>"; };
+		8242CA291EEA8C42007EEC72 /* OtherTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherTest.h; sourceTree = "<group>"; };
 		82789E001EE1166400C970D0 /* LearnCPP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnCPP; sourceTree = BUILT_PRODUCTS_DIR; };
 		82789E031EE1166400C970D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		82789E0A1EE1168700C970D0 /* ClassTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClassTest.cpp; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				82789E031EE1166400C970D0 /* main.cpp */,
+				8242CA291EEA8C42007EEC72 /* OtherTest.h */,
 				82789E0A1EE1168700C970D0 /* ClassTest.cpp */,
 				82789E0B1EE1168700C970D0 /* PingTest.cpp */,
 				82789E0D1EE1168700C970D0 /* TimeTest.cpp */,

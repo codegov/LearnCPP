@@ -15,6 +15,8 @@
 #include "IcmpTest.cpp"
 #include "SysctlTest.cpp"
 #include "pingquery.h"
+#include "OtherTest.h"
+
 
 int main(int argc, const char * argv[])
 {
@@ -33,6 +35,8 @@ int main(int argc, const char * argv[])
 //        printf("ret=%d", ret);
 //        return ret;
 //    }
+    
+    
     
     return 0;
 }
