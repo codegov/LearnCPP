@@ -16,14 +16,18 @@
 #include "SysctlTest.cpp"
 #include "pingquery.h"
 #include "OtherTest.h"
+#include "ThreadTest.cpp"
+#include "BoostTest.hpp"
 
 
 int main(int argc, const char * argv[])
 {
+//    BoostTest().testImp();
+    ThreadTest().testImp();
 //    SysctlTest().testImp();
 //    IcmpTest().testImp();
 //    UnionTest().testImp();
-    ClassTest().testImp();
+//    ClassTest().testImp();
 //    PingTest().testImp();
 //    TimeTest().testImp();
 //    SockTest().testImp();

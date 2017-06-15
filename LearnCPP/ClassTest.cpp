@@ -7,8 +7,12 @@
 //
 #include <stdio.h>
 #include <iostream>
+#include <list>
+#include <map>
 
 using namespace std;
+
+typedef function<void (string &id, string &body)> TestHandler;
 
 class Child
 {
@@ -71,6 +75,8 @@ public:
 
 class ClassTest
 {
+    list<string> tempList_;
+    
 public:
     static Child& getChild()
     {
@@ -93,11 +99,11 @@ public:
         cout << "四、Hello, "<< Son().name() << "\n";
         
         
-        //        Child child;
-        //
-        getChild();
-        getChild();
-        getChild();
+        Child child; // 执行构造函数
+        
+        getChild();//0x100201f90
+        getChild();//0x100201f90
+        getChild();//0x100201f90 同一个对象
     }
 
     void testOther()
@@ -144,12 +150,57 @@ public:
             printf("type & type2 %s\n", type & type2 ? "YES" : "NO");
         }
     }
+    
+    static bool __compare_list(const string& first, const string& second)
+    {
+        return first < second;
+    }
 
+    void testList()
+    {
+        list<string> tlist = tempList_;
+        tempList_.clear();
+        tlist.sort(__compare_list);
+        
+        for (std::list<string>::iterator it=tlist.begin(); it != tlist.end(); ++it)
+        {
+            printf("======%s\n", it->c_str());
+        }
+    }
+
+    #define lc_classtest_map classtest_map()
+    static std::map<int, string>& classtest_map() {
+        static std::map<int, string>* mq_map = new std::map<int, string>;
+        return *mq_map;
+    }
+    
+    void testMap()
+    {
+        int id = 1;
+        if (lc_classtest_map.end() == lc_classtest_map.find(id))
+        {
+            string& content = lc_classtest_map[id];
+            content = "12312";
+        }
+        string &cc = lc_classtest_map[id];
+        printf("map===%s\n", cc.c_str());
+    }
+    
     void testImp()
     {
         testClass();
         testOther();
         testRealloc();
         testType();
+        
+        tempList_.push_back("17");
+        tempList_.push_back("12");
+        tempList_.push_back("11");
+        tempList_.push_back("14");
+        tempList_.push_back("13");
+        testList();
+        
+        testMap();
+        testMap();
     }
 };

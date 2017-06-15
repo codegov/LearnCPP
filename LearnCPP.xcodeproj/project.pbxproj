@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8242CA231EE8ED49007EEC72 /* socketselect.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8242CA211EE8ED49007EEC72 /* socketselect.cc */; };
 		8242CA281EE8EED9007EEC72 /* pingquery.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8242CA261EE8EED9007EEC72 /* pingquery.cc */; };
+		8242CA2C1EEF60E4007EEC72 /* ThreadTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8242CA2B1EEF60E4007EEC72 /* ThreadTest.cpp */; };
+		8242D5FA1EF10831007EEC72 /* BoostTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8242D5F81EF10831007EEC72 /* BoostTest.cpp */; };
 		82789E041EE1166400C970D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E031EE1166400C970D0 /* main.cpp */; };
 		82789E0E1EE1168700C970D0 /* ClassTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0A1EE1168700C970D0 /* ClassTest.cpp */; };
 		82789E0F1EE1168700C970D0 /* PingTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0B1EE1168700C970D0 /* PingTest.cpp */; };
@@ -40,6 +42,11 @@
 		8242CA261EE8EED9007EEC72 /* pingquery.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pingquery.cc; sourceTree = "<group>"; };
 		8242CA271EE8EED9007EEC72 /* pingquery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pingquery.h; sourceTree = "<group>"; };
 		8242CA291EEA8C42007EEC72 /* OtherTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherTest.h; sourceTree = "<group>"; };
+		8242CA2B1EEF60E4007EEC72 /* ThreadTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThreadTest.cpp; sourceTree = "<group>"; };
+		8242D5F81EF10831007EEC72 /* BoostTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoostTest.cpp; sourceTree = "<group>"; };
+		8242D5F91EF10831007EEC72 /* BoostTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoostTest.hpp; sourceTree = "<group>"; };
+		8242D5FC1EF10BC2007EEC72 /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "../../../../../opt/local/lib/libboost_system-mt.a"; sourceTree = "<group>"; };
+		8242D5FE1EF10BF6007EEC72 /* libboost_filesystem-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_filesystem-mt.dylib"; path = "../../../../../opt/local/lib/libboost_filesystem-mt.dylib"; sourceTree = "<group>"; };
 		82789E001EE1166400C970D0 /* LearnCPP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnCPP; sourceTree = BUILT_PRODUCTS_DIR; };
 		82789E031EE1166400C970D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		82789E0A1EE1168700C970D0 /* ClassTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClassTest.cpp; sourceTree = "<group>"; };
@@ -76,11 +83,21 @@
 			path = m;
 			sourceTree = "<group>";
 		};
+		8242D5FB1EF10BC2007EEC72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8242D5FE1EF10BF6007EEC72 /* libboost_filesystem-mt.dylib */,
+				8242D5FC1EF10BC2007EEC72 /* libboost_system-mt.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		82789DF71EE1166400C970D0 = {
 			isa = PBXGroup;
 			children = (
 				82789E021EE1166400C970D0 /* LearnCPP */,
 				82789E011EE1166400C970D0 /* Products */,
+				8242D5FB1EF10BC2007EEC72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,7 +121,10 @@
 				82789E121EE13F8500C970D0 /* UnionTest.cpp */,
 				82789E141EE14EF500C970D0 /* IcmpTest.cpp */,
 				82789E161EE52D8800C970D0 /* SysctlTest.cpp */,
+				8242CA2B1EEF60E4007EEC72 /* ThreadTest.cpp */,
 				8242CA1F1EE8EBC9007EEC72 /* m */,
+				8242D5F81EF10831007EEC72 /* BoostTest.cpp */,
+				8242D5F91EF10831007EEC72 /* BoostTest.hpp */,
 			);
 			path = LearnCPP;
 			sourceTree = "<group>";
@@ -166,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8242CA2C1EEF60E4007EEC72 /* ThreadTest.cpp in Sources */,
 				82789E0E1EE1168700C970D0 /* ClassTest.cpp in Sources */,
 				82789E171EE52D8800C970D0 /* SysctlTest.cpp in Sources */,
 				8242CA281EE8EED9007EEC72 /* pingquery.cc in Sources */,
@@ -174,6 +195,7 @@
 				82789E101EE1168700C970D0 /* SockTest.cpp in Sources */,
 				82789E151EE14EF500C970D0 /* IcmpTest.cpp in Sources */,
 				82789E041EE1166400C970D0 /* main.cpp in Sources */,
+				8242D5FA1EF10831007EEC72 /* BoostTest.cpp in Sources */,
 				82789E111EE1168700C970D0 /* TimeTest.cpp in Sources */,
 				82789E0F1EE1168700C970D0 /* PingTest.cpp in Sources */,
 			);
@@ -274,6 +296,12 @@
 		82789E081EE1166400C970D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /opt/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -281,6 +309,12 @@
 		82789E091EE1166400C970D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /opt/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

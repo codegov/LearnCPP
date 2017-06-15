@@ -62,8 +62,8 @@ public:
         // Convert the mach time to milliseconds
         uint64_t mach_time = mach_absolute_time();
         uint64_t millis = (mach_time * timebase_info.numer) / (timebase_info.denom * 1000000);
-        
-        printf("mach_absolute_time(): %lld毫秒 ", millis);
+        // CPU 滴答时间就是CPU运行时间，也就是开机时间了
+        printf("mach_absolute_time(): %lld毫秒 %lld \n", millis, millis/(60 * 1000));
         showCurTime(millis);
     }
     
