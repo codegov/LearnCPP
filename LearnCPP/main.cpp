@@ -18,12 +18,14 @@
 #include "OtherTest.h"
 #include "ThreadTest.cpp"
 #include "BoostTest.hpp"
+#include "ConditionTest.hpp"
 
 
 int main(int argc, const char * argv[])
 {
-//    BoostTest().testImp();
-    ThreadTest().testImp();
+    ConditionTest().testImp();
+//    BoostTest("ssss").testImp();
+//    ThreadTest().testImp();
 //    SysctlTest().testImp();
 //    IcmpTest().testImp();
 //    UnionTest().testImp();

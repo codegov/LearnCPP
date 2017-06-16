@@ -25,32 +25,38 @@ public:
     {
         return "付**";
     }
-    Child()
-    {
-        cout<< "付**, 起床!\n";
-    }
-    ~Child()
-    {
-        cout<< "付**, 睡觉!\n";
-    }
+//    Child()
+//    {
+//        cout<< "付**, 起床!\n";
+//    }
+//    ~Child()
+//    {
+//        cout<< "付**, 睡觉!\n";
+//    }
 };
 
 class Daughter: public Child
 {
+    string _name;
 public:
     static shared_ptr<Daughter>& instance_shared_ptr() { static shared_ptr<Daughter> s_ptr;return s_ptr;}
     string name()
     {
         cout << "Daughter, your name is ";
-        return "付一笑";
+        return _name;
     }
     Daughter()
     {
-        cout<< "付一笑, 起床!\n";
+        cout<< _name << ", 起床!\n";
+    }
+    Daughter(string name = "付一笑")
+    {
+        _name = name;
+        cout<< _name << ", 起床!\n";
     }
     ~Daughter()
     {
-        cout<< "付一笑, 睡觉!\n";
+        cout<< _name << ", 睡觉!\n";
     }
 };
 
@@ -58,11 +64,11 @@ class Son: public Child
 {
 public:
     static shared_ptr<Son>& instance_shared_ptr() { static shared_ptr<Son> s_ptr;return s_ptr;}
-    //    string name()
-    //    {
-    //        cout << "Son, your name is ";
-    //        return "付子天";
-    //    }
+        string name()
+        {
+            cout << "Son, your name is ";
+            return "付子天";
+        }
     //    Son()
     //    {
     //        cout<< "付子天, 起床!\n";
@@ -77,7 +83,16 @@ class ClassTest
 {
     list<string> tempList_;
     
+    Daughter daugther_;
+    string   name_;
+    
 public:
+    
+    ClassTest():daugther_("付优"), name_(Son::instance_shared_ptr()->name())
+    {
+        printf("%s\n", name_.c_str());
+    }
+    
     static Child& getChild()
     {
         static Child* mutex = new Child;
@@ -95,7 +110,7 @@ public:
         
         cout << "一、Hello, "<< Daughter::instance_shared_ptr()->name() << "\n";
         cout << "二、Hello, "<< Son::instance_shared_ptr()->name() << "\n";
-        cout << "三、Hello, "<< Daughter().name() << "\n";
+//        cout << "三、Hello, "<< Daughter().name() << "\n";
         cout << "四、Hello, "<< Son().name() << "\n";
         
         
@@ -188,19 +203,20 @@ public:
     
     void testImp()
     {
-        testClass();
-        testOther();
-        testRealloc();
-        testType();
         
-        tempList_.push_back("17");
-        tempList_.push_back("12");
-        tempList_.push_back("11");
-        tempList_.push_back("14");
-        tempList_.push_back("13");
-        testList();
-        
-        testMap();
-        testMap();
+//        testClass();
+//        testOther();
+//        testRealloc();
+//        testType();
+//        
+//        tempList_.push_back("17");
+//        tempList_.push_back("12");
+//        tempList_.push_back("11");
+//        tempList_.push_back("14");
+//        tempList_.push_back("13");
+//        testList();
+//        
+//        testMap();
+//        testMap();
     }
 };

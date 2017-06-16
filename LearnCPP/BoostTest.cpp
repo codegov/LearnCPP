@@ -13,6 +13,8 @@
 #include <boost/function.hpp>
 #include <boost/make_shared.hpp>
 
+#include "thread.h"
+
 class SignalTest
 {
 private:
@@ -154,26 +156,111 @@ while(false)
         printf("======%u\n", valid_record_taskcount);
     }
     
+    void testMakeShared()
+    {
+        struct RunLoopInfo
+        {
+            RunLoopInfo():runing_message("")
+            {
+                runing_cond = boost::make_shared<string>();
+            }
+            boost::shared_ptr<string> runing_cond;
+            string runing_message_id;
+            string runing_message;
+            std::list <string> runing_handler;
+        };
+        
+        boost::shared_ptr<string> str1 = boost::make_shared<string>();
+        boost::shared_ptr<string> str2 = boost::make_shared<string>();
+        
+        boost::shared_ptr<string> str3 = boost::shared_ptr<string>();
+        boost::shared_ptr<string> str4 = boost::shared_ptr<string>();
+
+        
+        cout<<"1testMakeShared:" << str1 << "==" << str2<<"\n";
+        boost::shared_ptr<string> temp1 = RunLoopInfo().runing_cond;
+        boost::shared_ptr<string> temp2 = RunLoopInfo().runing_cond;
+        cout<<"2testMakeShared:" << temp1 << "==" <<temp2 <<"\n";
+        cout<<"3testMakeShared:" << str3 << "==" << str4<<"\n";
+        
+        if (!str3) str3 = boost::make_shared<string>();
+        if (!str4) str4 = boost::make_shared<string>();
+        cout<<"4testMakeShared:" << str3 << "==" << str4<<"\n";
+        
+    }
+    
+    void __ThreadNewRunloop()
+    {
+        printf("==run==\n");
+        static int i = 0;
+        static int count = 0;
+        while (true)
+        {
+            i++;
+            printf("%d ", i);
+            if (i == 10)
+            {
+                printf("sleep 2\n");
+                i = 0;
+                count++;
+                if (count == 5)
+                {
+                    break;
+                }
+                sleep(2);
+            }
+        }
+    }
+    
+    void testThread()
+    {
+        printf("****testThread*****\n");
+        SpinLock* sp = new SpinLock;
+        Thread thread(boost::bind(&ShareTest::__ThreadNewRunloop, this), NULL);
+        thread.outside_join();
+       
+        ScopedSpinLock lock(*sp);
+        
+        if (0 != thread.start())
+        {
+            delete sp;
+        }
+        thread.join();
+        printf("****testThread*****完成\n");
+        lock.unlock();
+    }
+    
 public:
     void testImp()
     {
-        testByte();
+//        testThread();
         
-        string str = "Hello World!";
-        Message message1(str, doAction1);
-        __AsyncInvokeHandler(11, message1);
-        
-        Message message2(str, doAction2);
-        __AsyncInvokeHandler(12, message2);
-        
-        Message message3(str, boost::bind(&ShareTest::doAction3, this));
-        __AsyncInvokeHandler(13, message3);
+        testMakeShared();
+//        testByte();
+//        
+//        string str = "Hello World!";
+//        Message message1(str, doAction1);
+//        __AsyncInvokeHandler(11, message1);
+//        
+//        Message message2(str, doAction2);
+//        __AsyncInvokeHandler(12, message2);
+//        
+//        Message message3(str, boost::bind(&ShareTest::doAction3, this));
+//        __AsyncInvokeHandler(13, message3);
     }
 };
 
 void BoostTest::testImp()
 {
-    SignalTest().testImp();
+//    SignalTest().testImp();
     ShareTest().testImp();
+}
+BoostTest::BoostTest()
+{
+    printf("BoostTest()\n");
+}
+BoostTest::BoostTest(string str)
+{
+    printf("BoostTest(string str)\n");
 }
 

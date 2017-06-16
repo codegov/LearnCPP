@@ -11,6 +11,7 @@
 		8242CA281EE8EED9007EEC72 /* pingquery.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8242CA261EE8EED9007EEC72 /* pingquery.cc */; };
 		8242CA2C1EEF60E4007EEC72 /* ThreadTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8242CA2B1EEF60E4007EEC72 /* ThreadTest.cpp */; };
 		8242D5FA1EF10831007EEC72 /* BoostTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8242D5F81EF10831007EEC72 /* BoostTest.cpp */; };
+		824A489A1EF3ACAC004B345A /* ConditionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 824A48981EF3ACAC004B345A /* ConditionTest.cpp */; };
 		82789E041EE1166400C970D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E031EE1166400C970D0 /* main.cpp */; };
 		82789E0E1EE1168700C970D0 /* ClassTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0A1EE1168700C970D0 /* ClassTest.cpp */; };
 		82789E0F1EE1168700C970D0 /* PingTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0B1EE1168700C970D0 /* PingTest.cpp */; };
@@ -34,10 +35,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8242CA201EE8EBC9007EEC72 /* mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mutex.h; sourceTree = "<group>"; };
 		8242CA211EE8ED49007EEC72 /* socketselect.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socketselect.cc; sourceTree = "<group>"; };
 		8242CA221EE8ED49007EEC72 /* socketselect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socketselect.h; sourceTree = "<group>"; };
-		8242CA241EE8EDC9007EEC72 /* lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock.h; sourceTree = "<group>"; };
 		8242CA251EE8EE61007EEC72 /* spinlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spinlock.h; sourceTree = "<group>"; };
 		8242CA261EE8EED9007EEC72 /* pingquery.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pingquery.cc; sourceTree = "<group>"; };
 		8242CA271EE8EED9007EEC72 /* pingquery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pingquery.h; sourceTree = "<group>"; };
@@ -47,6 +46,14 @@
 		8242D5F91EF10831007EEC72 /* BoostTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoostTest.hpp; sourceTree = "<group>"; };
 		8242D5FC1EF10BC2007EEC72 /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "../../../../../opt/local/lib/libboost_system-mt.a"; sourceTree = "<group>"; };
 		8242D5FE1EF10BF6007EEC72 /* libboost_filesystem-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_filesystem-mt.dylib"; path = "../../../../../opt/local/lib/libboost_filesystem-mt.dylib"; sourceTree = "<group>"; };
+		824A48921EF37F5F004B345A /* atomic_oper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomic_oper.h; sourceTree = "<group>"; };
+		824A48931EF37F5F004B345A /* condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = condition.h; sourceTree = "<group>"; };
+		824A48941EF37F5F004B345A /* lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock.h; sourceTree = "<group>"; };
+		824A48951EF37F5F004B345A /* mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mutex.h; sourceTree = "<group>"; };
+		824A48961EF37F5F004B345A /* runnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = runnable.h; sourceTree = "<group>"; };
+		824A48971EF37F5F004B345A /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
+		824A48981EF3ACAC004B345A /* ConditionTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConditionTest.cpp; sourceTree = "<group>"; };
+		824A48991EF3ACAC004B345A /* ConditionTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConditionTest.hpp; sourceTree = "<group>"; };
 		82789E001EE1166400C970D0 /* LearnCPP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnCPP; sourceTree = BUILT_PRODUCTS_DIR; };
 		82789E031EE1166400C970D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		82789E0A1EE1168700C970D0 /* ClassTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClassTest.cpp; sourceTree = "<group>"; };
@@ -72,13 +79,12 @@
 		8242CA1F1EE8EBC9007EEC72 /* m */ = {
 			isa = PBXGroup;
 			children = (
+				824A48911EF37F5F004B345A /* thread */,
 				8242CA261EE8EED9007EEC72 /* pingquery.cc */,
 				8242CA271EE8EED9007EEC72 /* pingquery.h */,
 				8242CA251EE8EE61007EEC72 /* spinlock.h */,
-				8242CA241EE8EDC9007EEC72 /* lock.h */,
 				8242CA211EE8ED49007EEC72 /* socketselect.cc */,
 				8242CA221EE8ED49007EEC72 /* socketselect.h */,
-				8242CA201EE8EBC9007EEC72 /* mutex.h */,
 			);
 			path = m;
 			sourceTree = "<group>";
@@ -90,6 +96,19 @@
 				8242D5FC1EF10BC2007EEC72 /* libboost_system-mt.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		824A48911EF37F5F004B345A /* thread */ = {
+			isa = PBXGroup;
+			children = (
+				824A48921EF37F5F004B345A /* atomic_oper.h */,
+				824A48931EF37F5F004B345A /* condition.h */,
+				824A48941EF37F5F004B345A /* lock.h */,
+				824A48951EF37F5F004B345A /* mutex.h */,
+				824A48961EF37F5F004B345A /* runnable.h */,
+				824A48971EF37F5F004B345A /* thread.h */,
+			);
+			path = thread;
 			sourceTree = "<group>";
 		};
 		82789DF71EE1166400C970D0 = {
@@ -125,6 +144,8 @@
 				8242CA1F1EE8EBC9007EEC72 /* m */,
 				8242D5F81EF10831007EEC72 /* BoostTest.cpp */,
 				8242D5F91EF10831007EEC72 /* BoostTest.hpp */,
+				824A48981EF3ACAC004B345A /* ConditionTest.cpp */,
+				824A48991EF3ACAC004B345A /* ConditionTest.hpp */,
 			);
 			path = LearnCPP;
 			sourceTree = "<group>";
@@ -189,6 +210,7 @@
 				8242CA2C1EEF60E4007EEC72 /* ThreadTest.cpp in Sources */,
 				82789E0E1EE1168700C970D0 /* ClassTest.cpp in Sources */,
 				82789E171EE52D8800C970D0 /* SysctlTest.cpp in Sources */,
+				824A489A1EF3ACAC004B345A /* ConditionTest.cpp in Sources */,
 				8242CA281EE8EED9007EEC72 /* pingquery.cc in Sources */,
 				82789E131EE13F8500C970D0 /* UnionTest.cpp in Sources */,
 				8242CA231EE8ED49007EEC72 /* socketselect.cc in Sources */,

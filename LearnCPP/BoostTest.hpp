@@ -17,6 +17,8 @@ using namespace std;
 class BoostTest
 {
 public:
+    BoostTest();
+    BoostTest(string str);
     void testImp();
 };
 
