@@ -12,6 +12,7 @@
 		8242CA2C1EEF60E4007EEC72 /* ThreadTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8242CA2B1EEF60E4007EEC72 /* ThreadTest.cpp */; };
 		8242D5FA1EF10831007EEC72 /* BoostTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8242D5F81EF10831007EEC72 /* BoostTest.cpp */; };
 		824A489A1EF3ACAC004B345A /* ConditionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 824A48981EF3ACAC004B345A /* ConditionTest.cpp */; };
+		824A489E1EF7A0FC004B345A /* TestRunable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 824A489C1EF7A0FC004B345A /* TestRunable.cpp */; };
 		82789E041EE1166400C970D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E031EE1166400C970D0 /* main.cpp */; };
 		82789E0E1EE1168700C970D0 /* ClassTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0A1EE1168700C970D0 /* ClassTest.cpp */; };
 		82789E0F1EE1168700C970D0 /* PingTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82789E0B1EE1168700C970D0 /* PingTest.cpp */; };
@@ -54,6 +55,9 @@
 		824A48971EF37F5F004B345A /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
 		824A48981EF3ACAC004B345A /* ConditionTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConditionTest.cpp; sourceTree = "<group>"; };
 		824A48991EF3ACAC004B345A /* ConditionTest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConditionTest.hpp; sourceTree = "<group>"; };
+		824A489B1EF7A0DB004B345A /* Runable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Runable.h; sourceTree = "<group>"; };
+		824A489C1EF7A0FC004B345A /* TestRunable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestRunable.cpp; sourceTree = "<group>"; };
+		824A489D1EF7A0FC004B345A /* TestRunable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TestRunable.hpp; sourceTree = "<group>"; };
 		82789E001EE1166400C970D0 /* LearnCPP */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearnCPP; sourceTree = BUILT_PRODUCTS_DIR; };
 		82789E031EE1166400C970D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		82789E0A1EE1168700C970D0 /* ClassTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClassTest.cpp; sourceTree = "<group>"; };
@@ -146,6 +150,9 @@
 				8242D5F91EF10831007EEC72 /* BoostTest.hpp */,
 				824A48981EF3ACAC004B345A /* ConditionTest.cpp */,
 				824A48991EF3ACAC004B345A /* ConditionTest.hpp */,
+				824A489B1EF7A0DB004B345A /* Runable.h */,
+				824A489C1EF7A0FC004B345A /* TestRunable.cpp */,
+				824A489D1EF7A0FC004B345A /* TestRunable.hpp */,
 			);
 			path = LearnCPP;
 			sourceTree = "<group>";
@@ -218,6 +225,7 @@
 				82789E151EE14EF500C970D0 /* IcmpTest.cpp in Sources */,
 				82789E041EE1166400C970D0 /* main.cpp in Sources */,
 				8242D5FA1EF10831007EEC72 /* BoostTest.cpp in Sources */,
+				824A489E1EF7A0FC004B345A /* TestRunable.cpp in Sources */,
 				82789E111EE1168700C970D0 /* TimeTest.cpp in Sources */,
 				82789E0F1EE1168700C970D0 /* PingTest.cpp in Sources */,
 			);

@@ -230,12 +230,73 @@ while(false)
         lock.unlock();
     }
     
+    void testBlock()
+    {
+        boost::function<bool ()> block1;
+        string findS = "aa";
+        int i = 122;
+        block1 = [&findS, i](){
+            printf("1findS=%s %d\n", findS.c_str(), i);
+            return true;
+        };
+        if (block1) block1();
+        
+        boost::function<bool (string p1, string p2)> block2;
+        block2 = [](string p1, string p2){
+            printf("block2===%s %s\n", p1.c_str(), p2.c_str());
+            return true;
+        };
+        if (block2) block2("参数一", "参数二");
+        
+        std::list<string> list;
+        string v1 = "qq";
+        list.push_back(v1);
+        
+        string v2 = "aa";
+        list.push_back(v2);
+        bool noRes = ( list.end() == find_if(list.begin(), list.end(), [findS](const string _v){
+            printf("---==%s  %s %d\n", findS.c_str(), _v.c_str(), findS.compare(_v)==  0);
+            return (findS.compare(_v) == 0);
+        }) );
+        printf("2findS=%s %d\n", findS.c_str(), !noRes);
+        
+    }
+    
+    inline uint32_t atomic_cas32
+    (volatile uint32_t *mem, uint32_t with, uint32_t cmp)
+    {
+        uint32_t prev = cmp;
+        // This version by Mans Rullgard of Pathscale
+        __asm__ __volatile__ ( "lock\n\t"
+                              "cmpxchg %2,%0"
+                              : "+m"(*mem), "+a"(prev)
+                              : "r"(with)
+                              : "cc");
+        
+        return prev;
+    }
+    
+    void testAtomic()
+    {
+        volatile unsigned int anyway_notify_;
+        anyway_notify_ = 0;
+        if (atomic_cas32(&anyway_notify_, 0, 1))
+        {
+            printf("testAtomic YES\n");
+        } else
+        {
+            printf("testAtomic NO\n");
+        }
+    }
+    
 public:
     void testImp()
     {
+        testAtomic();
+//        testBlock();
 //        testThread();
         
-        testMakeShared();
+//        testMakeShared();
 //        testByte();
 //        
 //        string str = "Hello World!";

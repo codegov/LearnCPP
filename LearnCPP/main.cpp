@@ -19,19 +19,21 @@
 #include "ThreadTest.cpp"
 #include "BoostTest.hpp"
 #include "ConditionTest.hpp"
+#include "TestRunable.hpp"
 
 
 int main(int argc, const char * argv[])
 {
-    ConditionTest().testImp();
-//    BoostTest("ssss").testImp();
+//    TestRunable().testImp();
+//    ConditionTest().testImp();
+//    BoostTest().testImp();
 //    ThreadTest().testImp();
 //    SysctlTest().testImp();
 //    IcmpTest().testImp();
 //    UnionTest().testImp();
 //    ClassTest().testImp();
 //    PingTest().testImp();
-//    TimeTest().testImp();
+    TimeTest().testImp();
 //    SockTest().testImp();
     
 //    std::string host = "www.qq.com";

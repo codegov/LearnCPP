@@ -67,6 +67,31 @@ public:
         showCurTime(millis);
     }
     
+    class tickcountdiff_t
+    {
+    public:
+        tickcountdiff_t(int64_t _diff): tickcount_diff_(_diff)
+        {
+        }
+        
+        operator int64_t() const
+        {
+            printf("tickcount_diff_===%lld\n", tickcount_diff_);
+            return tickcount_diff_;
+        }
+        
+        tickcountdiff_t& operator +=(int64_t _factor)  { tickcount_diff_ += _factor; return *this;}
+        tickcountdiff_t& operator -= (int64_t _factor)  { tickcount_diff_ -= _factor; return *this;}
+        tickcountdiff_t& operator *=(int64_t _factor)  { tickcount_diff_ *= _factor; return *this;}
+        
+    public:
+        // tickcountdiff_t(const tickcountdiff_t&);
+        // tickcountdiff_t& operator=(const tickcountdiff_t&);
+        
+    private:
+        int64_t tickcount_diff_;
+    };
+    
     void testImp()
     {
         struct timeval tv;
@@ -85,5 +110,13 @@ public:
         sleep(1);
         testMach();
         normalUse();
+        
+        if (100000 > tickcountdiff_t(4.5 * 60 * 1000))
+        {
+            printf("tickcountdiff_t >>> (4.5 * 60 * 1000);\n");
+        } else
+        {
+            printf("tickcountdiff_t <<<\n");
+        }
     }
 };
